@@ -1,24 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import { getPricesForSymbole } from "./api";
+import { CurrencyType } from "./models/currencyType";
+import CurrencyTable from "./components/currencyTable";
+import SearchBar from "./components/searchBar";
 
 function App() {
+  const [currencies, setCurrencies] = useState<CurrencyType[]>([]);
+  const [searchText, setSearchText] = useState<string>("");
+  const [error, setError] = useState<string>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const handleSearch = () => {
+    setError(undefined);
+    setIsLoading(true);
+    getPricesForSymbole(searchText)
+      .then((val) => {
+        setCurrencies(Array.isArray(val) ? val : [val]);
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setError(
+          "There was a problem while fetching the informations. Perhaps try a different symbol"
+        );
+        setCurrencies([]);
+        setIsLoading(false);
+      });
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SearchBar
+        setValue={(val) => setSearchText(val)}
+        onSearch={handleSearch}
+      />
+      {error && <div className="error">{error}</div>}
+      {isLoading && <div>... Loading ...</div>}
+      <CurrencyTable currencies={currencies} />
     </div>
   );
 }
