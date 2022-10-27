@@ -31,7 +31,7 @@ function App() {
   return (
     <div className="App">
       <SearchBar
-        setValue={(val) => setSearchText(val)}
+        setValue={setSearchText}
         onSearch={() => {
           if (!isLoading) handleSearch();
         }}
