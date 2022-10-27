@@ -32,11 +32,13 @@ function App() {
     <div className="App">
       <SearchBar
         setValue={(val) => setSearchText(val)}
-        onSearch={handleSearch}
+        onSearch={() => {
+          if (!isLoading) handleSearch();
+        }}
       />
+      <CurrencyTable currencies={currencies} />
       {error && <div className="error">{error}</div>}
       {isLoading && <div>... Loading ...</div>}
-      <CurrencyTable currencies={currencies} />
     </div>
   );
 }
