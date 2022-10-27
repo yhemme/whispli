@@ -14,7 +14,7 @@ function App() {
   const handleSearch = () => {
     setError(undefined);
     setIsLoading(true);
-    getPricesForSymbole(searchText)
+    getPricesForSymbole(searchText.toUpperCase())
       .then((val) => {
         setCurrencies(Array.isArray(val) ? val : [val]);
         setIsLoading(false);
