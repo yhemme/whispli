@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/whispli/static/css/main.b4c34c0d.css",
-    "main.js": "/whispli/static/js/main.e21733a0.js",
+    "main.js": "/whispli/static/js/main.5f14780d.js",
     "static/js/787.0d898517.chunk.js": "/whispli/static/js/787.0d898517.chunk.js",
     "index.html": "/whispli/index.html",
     "main.b4c34c0d.css.map": "/whispli/static/css/main.b4c34c0d.css.map",
-    "main.e21733a0.js.map": "/whispli/static/js/main.e21733a0.js.map",
+    "main.5f14780d.js.map": "/whispli/static/js/main.5f14780d.js.map",
     "787.0d898517.chunk.js.map": "/whispli/static/js/787.0d898517.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b4c34c0d.css",
-    "static/js/main.e21733a0.js"
+    "static/js/main.5f14780d.js"
   ]
 }
